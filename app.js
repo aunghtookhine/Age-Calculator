@@ -25,7 +25,6 @@ var months = {
     11: 30,
     12: 31,
 };
-var pattern = ^[0-9]+$;
 var checkLeapYear = function (birthYear) {
     if ((birthYear % 4 === 0 && birthYear % 100 !== 0) || birthYear % 400 === 0) {
         months[2] = 29;
@@ -41,19 +40,19 @@ var checkValidDate = function (birthDay, birthMonth, birthYear, months, year) {
     dayLabelTag.style.color = "black";
     errorMonthTag.innerHTML = "";
     errorYearTag.innerHTML = "";
-    if (birthDay > months[birthMonth] || birthDay > 31 || !pattern.match(birthDay)) {
+    if (birthDay > months[birthMonth] || birthDay > 31 || isNaN(birthDay)) {
         inputDayTag.style.border = "1px solid #FF0000";
         dayLabelTag.style.color = "red";
         errorDayTag.innerHTML = "Must be a valid day";
         i = false;
     }
-    if (birthMonth > 12 || !pattern.match(birthMonth)) {
+    if (birthMonth > 12 || isNaN(birthMonth)) {
         inputMonthTag.style.border = "1px solid #FF0000";
         monthLabelTag.style.color = "red";
         errorMonthTag.innerHTML = "Must be a valid month";
         i = false;
     }
-    if (birthYear > year || !pattern.match(birthYear)) {
+    if (birthYear > year || isNaN(birthYear)) {
         inputYearTag.style.border = "1px solid #FF0000";
         yearLabelTag.style.color = "red";
         errorYearTag.innerHTML = "Must be a valid month";
